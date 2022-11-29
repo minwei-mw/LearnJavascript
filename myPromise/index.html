@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>myPromise</title>
+    <script src="./myPromise.js"></script>
+  </head>
+  <body>
+    <script>
+      const p = new myPromise((resolve, reject) => {
+        resolve("ok");
+      });
+      p.then(
+        (value) => {
+          console.log(value);
+        },
+        (error) => {
+          console.warn(error);
+        }
+      );
+    </script>
+  </body>
+</html>
