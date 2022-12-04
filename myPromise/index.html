@@ -9,6 +9,7 @@
     <script>
       const p = new myPromise((resolve, reject) => {
         resolve("ok");
+        reject("err");
       });
       p.then(
         (value) => {
@@ -18,6 +19,7 @@
           console.warn(error);
         }
       );
+      console.log(p)
     </script>
   </body>
 </html>

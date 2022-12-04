@@ -6,15 +6,22 @@ function myPromise(executor) {
     self.myPromiseResult = null
 
     function resolve(data) {
+        if (self.myPromiseState !== "pending") return;
         self.myPromiseState = "resolved";
         self.myPromiseResult = data;
     }
-    function reject() {
+
+    function reject(data) {
+        if (self.myPromiseState !== "pending") return;
         self.myPromiseState = "rejected";
         self.myPromiseResult = data;
     }
-    // 执行构造器
-    executor(resolve, reject)
+    try {
+        // 执行构造器
+        executor(resolve, reject)
+    } catch (error) {
+        reject(error)
+    }
 }
 
 myPromise.prototype.then = function (onResoleved, onRejected) {
